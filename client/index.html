@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,22 +11,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
 
   <header class="c-navbar">
     <div class="o-container c-navbar__inner">
       <a href="/" class="c-navbar__brand">
-        <img
-          id="brand-logo"
-          src="/assets/img/logo-light.png"
+        <img id="brand-logo" src="/assets/img/logo-light.png"
           srcset="/assets/img/logo-light.png 1x, /assets/img/logo-light@2x.png 2x"
-          data-light="/assets/img/logo-light.png"
-          data-light-2x="/assets/img/logo-light@2x.png"
-          data-dark="/assets/img/logo-dark.png"
-          data-dark-2x="/assets/img/logo-dark@2x.png"
-          alt="Alquileres Premium"
-          decoding="async"
-        >
+          data-light="/assets/img/logo-light.png" data-light-2x="/assets/img/logo-light@2x.png"
+          data-dark="/assets/img/logo-dark.png" data-dark-2x="/assets/img/logo-dark@2x.png" alt="Alquileres Premium"
+          decoding="async">
       </a>
       <nav id="primary-nav" class="c-navbar__nav" aria-label="Navegación principal">
         <a href="#" class="c-navbar__link is-active" data-view="home">Inicio</a>
@@ -36,11 +32,13 @@
         <a href="#" class="c-navbar__link u-desktop-only" data-view="admin">Admin</a>
 
         <div id="user-menu" class="c-user-menu">
-          <button id="user-menu-toggle" class="c-user-menu__toggle" type="button" aria-expanded="false" title="Mi cuenta">👤</button>
+          <button id="user-menu-toggle" class="c-user-menu__toggle" type="button" aria-expanded="false"
+            title="Mi cuenta">👤</button>
           <div class="c-user-menu__dropdown" role="menu">
             <a id="user-menu-login" href="#" data-view="auth" role="menuitem">Iniciar sesión</a>
             <a id="user-menu-reservations" href="./user.html" role="menuitem">Mis reservas</a>
-            <button id="user-menu-logout" type="button" class="c-user-menu__logout" role="menuitem">Cerrar sesión</button>
+            <button id="user-menu-logout" type="button" class="c-user-menu__logout" role="menuitem">Cerrar
+              sesión</button>
           </div>
         </div>
       </nav>
@@ -55,7 +53,7 @@
 
   <main class="o-container">
     <section id="view-home" class="js-view is-active" aria-label="Propiedades destacadas">
-      <section class="c-filters" id="filters-form">
+      <form class="c-filters" id="filters-form">
         <div>
           <label for="filter-search">Buscar</label>
           <input id="filter-search" name="q" type="search" placeholder="Destino o título">
@@ -68,14 +66,22 @@
           <label for="filter-max">Precio máx. (USD)</label>
           <input id="filter-max" name="max" type="number" min="0" step="10" placeholder="500">
         </div>
+        <div>
+          <label for="filter-sort">Ordenar por</label>
+          <select id="filter-sort" name="sort">
+            <option value="id-asc">Predeterminado</option>
+            <option value="price-asc">Precio: menor a mayor</option>
+            <option value="price-desc">Precio: mayor a menor</option>
+          </select>
+        </div>
         <div class="c-filters__actions">
           <button type="submit">Filtrar</button>
           <button type="reset">Limpiar</button>
         </div>
-      </section>
+      </form>
 
       <section id="properties-grid" class="o-grid"></section>
-    </section>
+      </section>
 
     <section id="view-about" class="js-view" hidden aria-label="Sobre nosotros">
       <div class="c-panel c-about">
@@ -84,8 +90,8 @@
         </div>
         <div class="c-about__content">
           <h2>Sobre nosotros</h2>
-          <p>Somos un equipo que conecta viajeros con alojamientos 
-            únicos en Miami, combinando curaduría de espacios, 
+          <p>Somos un equipo que conecta viajeros con alojamientos
+            únicos en Miami, combinando curaduría de espacios,
             soporte humano y tecnología simple para reservar.</p>
           <p>Buscamos que cada estadía sea fácil, segura y memorable.</p>
         </div>
@@ -165,9 +171,7 @@
       </div>
     </section>
 
-    <section id="view-admin"
-         class="c-panel c-panel--admin u-desktop-only js-view"
-         hidden>
+    <section id="view-admin" class="c-panel c-panel--admin u-desktop-only js-view" hidden>
       <header class="c-panel__header">
         <div class="c-panel__title">
           <h2>Panel admin</h2>
@@ -186,8 +190,15 @@
         <table class="c-table c-table--grid">
           <thead>
             <tr class="c-table__row">
-              <th>ID</th><th>Propiedad</th><th>Huesped</th><th>Contacto</th>
-              <th>Check-in</th><th>Check-out</th><th>Huespedes</th><th>Creada</th><th>Acciones</th>
+              <th>ID</th>
+              <th>Propiedad</th>
+              <th>Huesped</th>
+              <th>Contacto</th>
+              <th>Check-in</th>
+              <th>Check-out</th>
+              <th>Huespedes</th>
+              <th>Creada</th>
+              <th>Acciones</th>
             </tr>
           </thead>
           <tbody id="reservations-tbody"></tbody>
@@ -210,8 +221,14 @@
         <table class="c-table c-table--grid">
           <thead>
             <tr class="c-table__row">
-              <th>ID</th><th>Nombre</th><th>Email</th><th>Teléfono</th>
-              <th>País</th><th>Ciudad</th><th>Usuario</th><th>Registro</th>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Teléfono</th>
+              <th>País</th>
+              <th>Ciudad</th>
+              <th>Usuario</th>
+              <th>Registro</th>
             </tr>
           </thead>
           <tbody id="users-tbody"></tbody>
@@ -222,18 +239,12 @@
 
   <footer class="c-footer">
     <div class="o-container">
-            <a href="/" class="c-navbar__brand">
-        <img
-          id="brand-logo"
-          src="/assets/img/logo-light.png"
+      <a href="/" class="c-navbar__brand">
+        <img id="brand-logo" src="/assets/img/logo-light.png"
           srcset="/assets/img/logo-light.png 1x, /assets/img/logo-light@2x.png 2x"
-          data-light="/assets/img/logo-light.png"
-          data-light-2x="/assets/img/logo-light@2x.png"
-          data-dark="/assets/img/logo-dark.png"
-          data-dark-2x="/assets/img/logo-dark@2x.png"
-          alt="Alquileres Premium"
-          decoding="async"
-        >
+          data-light="/assets/img/logo-light.png" data-light-2x="/assets/img/logo-light@2x.png"
+          data-dark="/assets/img/logo-dark.png" data-dark-2x="/assets/img/logo-dark@2x.png" alt="Alquileres Premium"
+          decoding="async">
       </a>
       <p>© 2026 Stylo Propiedades.</p>
       <p>Desarrollado por Willans Junes.</p>
@@ -241,7 +252,8 @@
     </div>
   </footer>
 
-  <div id="admin-modal" class="c-modal" hidden aria-hidden="true" role="dialog" aria-labelledby="admin-modal-title" aria-modal="true">
+  <div id="admin-modal" class="c-modal" hidden aria-hidden="true" role="dialog" aria-labelledby="admin-modal-title"
+    aria-modal="true">
     <div class="c-modal__backdrop"></div>
     <div class="c-modal__dialog">
       <header class="c-modal__header">
@@ -266,4 +278,5 @@
 
   <script type="module" src="js/main.js"></script>
 </body>
+
 </html>

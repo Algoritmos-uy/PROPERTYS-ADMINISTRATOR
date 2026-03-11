@@ -75,6 +75,23 @@
     transform: translateY(0);
 }
 
+#filter-sort {
+    min-width: 220px;
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    background-color: transparent;
+    color: #111827;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+#filter-sort:focus {
+    border-color: #016184;
+    box-shadow: 0 0 0 3px rgba(1, 97, 132, 0.15);
+}
+
 @media (max-width: 900px) {
     .c-filters {
         grid-template-columns: 1fr 1fr;

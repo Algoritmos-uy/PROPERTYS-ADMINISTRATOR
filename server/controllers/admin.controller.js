@@ -2,22 +2,30 @@ import jwt from 'jsonwebtoken';
 import { randomUUID } from 'crypto';
 import { initDB } from '../models/db.js';
 
-const admins = [
-  { user: (process.env.ADMIN_USER || 'admin').toLowerCase(), pass: process.env.ADMIN_PASS || '43482613' },
-  { user: process.env.ADMIN_USER_1?.toLowerCase(),          pass: process.env.ADMIN_PASS_1 || process.env.ADMIN_PASS || '43482613' },
-  { user: process.env.ADMIN_USER_2?.toLowerCase(),          pass: process.env.ADMIN_PASS_2 || process.env.ADMIN_PASS || '43482613' },
-].filter(a => a.user && a.pass);
-
 const JWT_SECRET = process.env.ADMIN_JWT_SECRET || 'change-me';
 const JWT_EXPIRES_IN = process.env.ADMIN_JWT_EXPIRES_IN || '2h';
 const revokedTokens = new Set();
+
+function getAdminsFromEnv() {
+  return [
+    { user: (process.env.ADMIN_USER || '').toLowerCase(), pass: process.env.ADMIN_PASS || '' },
+    { user: (process.env.ADMIN_USER_1 || '').toLowerCase(), pass: process.env.ADMIN_PASS_1 || '' },
+    { user: (process.env.ADMIN_USER_2 || '').toLowerCase(), pass: process.env.ADMIN_PASS_2 || '' }
+  ].filter((a) => a.user && a.pass);
+}
 
 export const adminLogin = (req, res) => {
   const username = (req.body?.username || '').trim().toLowerCase();
   const password = (req.body?.password || '').trim();
 
   if (!username || !password) return res.status(400).json({ error: 'Faltan credenciales' });
-  const admin = admins.find(a => a.user === username && a.pass === password);
+
+  const admins = getAdminsFromEnv();
+  if (!admins.length) {
+    return res.status(500).json({ error: 'Admins no configurados en variables de entorno' });
+  }
+
+  const admin = admins.find((a) => a.user === username && a.pass === password);
   if (!admin) return res.status(401).json({ error: 'Credenciales inválidas' });
 
   const jti = randomUUID();

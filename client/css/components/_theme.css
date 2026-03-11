@@ -89,7 +89,7 @@
 
 .theme-dark .c-chat__form input {
     background: #111827;
-    border-color: #1f2937;
+    border-color: #494c50;
     color: #e5e7eb;
 }
 
@@ -134,8 +134,8 @@
 
 .theme-dark .c-filters input {
     background: #111827;
-    color: #e5e7eb;
-    border-color: #1f2937;
+    color: #f2f3f3;
+    border-color: #7e8686;
 }
 
 .theme-dark .c-filters input:focus {
@@ -146,7 +146,13 @@
 .theme-dark .c-filters button[type="reset"] {
     background: #111827;
     color: #e5e7eb;
-    border-color: #1f2937;
+    border-color: #7e8686;
+}
+
+.theme-dark .c-filters #filter-sort{
+    background: #111827;
+    color: #e5e7eb;
+    border-color: #7e8686;
 }
 
 .theme-dark .c-property-card {
@@ -222,7 +228,7 @@
 .theme-dark select {
     background: #111827;
     color: #e5e7eb;
-    border-color: #1f2937;
+    border-color: #7e8686;
 }
 
 .theme-dark .c-form--stack input:focus {

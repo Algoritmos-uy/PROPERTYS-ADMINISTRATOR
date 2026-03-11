@@ -8,6 +8,11 @@ Actualmente la aplicación se encuentra **funcional** en su flujo principal:
 
 - Navegación por secciones desde header (Inicio, Sobre nosotros, Contacto, Pagos, Admin).
 - Listado de propiedades en Inicio.
+- Filtros de propiedades por rango de precio (mínimo / máximo).
+- Ordenamiento de propiedades:
+  - Predeterminado (ID ascendente).
+  - Precio ascendente.
+  - Precio descendente.
 - Panel Admin operativo:
   - Login / logout.
   - Listado de reservas.
@@ -15,7 +20,8 @@ Actualmente la aplicación se encuentra **funcional** en su flujo principal:
   - Eliminación de reservas.
   - Exportación de reservas (CSV / Excel) y usuarios (CSV).
 - Base de datos SQLite en `stylo.sqlite`.
-- Stylo-Bot integrado en frontend.
+- Asistente conversacional Lia integrado en frontend.
+- Flujo de respuesta del bot con escritura progresiva (simulación en UI).
 
 > Nota: se dejó pendiente endurecer seguridad admin (JWT robusto, expiración avanzada, revocación persistente, etc.) para una siguiente fase controlada.
 
@@ -33,7 +39,7 @@ Actualmente la aplicación se encuentra **funcional** en su flujo principal:
 
 - Node.js
 - Express
-- SQLite (sqlite3)
+- SQLite (`sqlite3`)
 
 ---
 
@@ -43,7 +49,9 @@ Actualmente la aplicación se encuentra **funcional** en su flujo principal:
 AIRBNB-CLONE/
 ├─ client/
 │  ├─ index.html
+│  ├─ user.html
 │  ├─ css/
+│  │  ├─ main.css
 │  │  └─ components/
 │  ├─ js/
 │  │  ├─ main.js
@@ -51,6 +59,7 @@ AIRBNB-CLONE/
 │  └─ assets/
 ├─ server/
 │  ├─ app.js
+│  ├─ server.js
 │  ├─ controllers/
 │  ├─ routes/
 │  ├─ middleware/
@@ -61,6 +70,7 @@ AIRBNB-CLONE/
 │  └─ database/
 │     └─ stylo.sqlite
 ├─ .env
+├─ .env.example
 ├─ package.json
 └─ README.md
 ```
@@ -79,10 +89,16 @@ JWT_EXPIRES_IN=12h
 ADMIN_USER=admin
 ADMIN_USER_1=admin-1
 ADMIN_USER_2=admin-2
-ADMIN_PASS=43482613
+ADMIN_PASS=TU_PASSWORD_ADMIN
 # ADMIN_PASS_1=
 # ADMIN_PASS_2=
 ```
+
+### Recomendaciones importantes
+
+- No usar contraseñas hardcodeadas en controladores.
+- Evitar fallback de credenciales en código.
+- Reiniciar servidor después de modificar `.env`.
 
 ---
 
@@ -121,11 +137,15 @@ npm run dev
 
 - Sistema de vistas por secciones con IDs tipo `view-*`.
 - Header con enlaces para navegación principal.
+- Corrección previa de estructura HTML (cierre de etiquetas) para estabilidad del render.
 
-## 2) Propiedades
+## 2) Propiedades (Home)
 
-- Renderizado de propiedades en la vista de inicio.
+- Renderizado de cards de propiedades.
 - Consumo de datos desde API backend.
+- Filtro por precio mínimo/máximo.
+- Orden configurable por precio ascendente/descendente.
+- Orden predeterminado por ID ascendente para consistencia visual.
 
 ## 3) Panel Admin
 
@@ -135,11 +155,14 @@ npm run dev
 - Exportaciones:
   - Reservas: CSV / Excel.
   - Usuarios: CSV.
+- Ajustes de visibilidad responsive del acceso admin (desktop-only).
 
-## 4) Lia
+## 4) Lia (asistente)
 
-- Bot de asistencia integrado en frontend.
-- Flujo operativo básico.
+- Bot integrado en frontend.
+- Flujo operativo con mensajes en panel flotante.
+- Soporte de escritura progresiva en respuesta.
+- Ajustes de identidad visual (nombre Lia y avatar configurable).
 
 ---
 
@@ -173,6 +196,7 @@ Pendiente de implementación en próxima fase:
 3. Integración de destino real de correo en contacto.
 4. Integración de número de WhatsApp configurable.
 5. Revisión final de UX responsive y accesibilidad.
+6. Revisión final del tono/autoreferencias de Lia en español (femenino consistente).
 
 ---
 
@@ -181,9 +205,6 @@ Pendiente de implementación en próxima fase:
 - Mantener cambios incrementales y testeables.
 - Evitar cambios masivos en header/nav sin validación inmediata.
 - Confirmar siempre consistencia entre IDs de HTML y selectores de `main.js`.
-
----
-
-## Autor / Equipo
-
-Proyecto en evolución para práctica y consolidación de arquitectura fullstack tipo alquiler temporal.
+- Ante errores de render en Home, revisar primero:
+  - estructura HTML,
+  - respuesta de `getProperties()`,

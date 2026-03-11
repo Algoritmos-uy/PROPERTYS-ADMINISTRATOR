@@ -26,6 +26,11 @@
     line-height: 1.6;
 }
 
+.c-panel__header--sub {
+    margin-top: 12px;
+}
+
+/* About / contacto */
 .c-about {
     display: grid;
     grid-template-columns: minmax(260px, 1fr) minmax(280px, 1.2fr);
@@ -63,6 +68,7 @@
     justify-content: flex-end;
 }
 
+/* Botones */
 .c-btn {
     display: inline-flex;
     align-items: center;
@@ -93,12 +99,6 @@
     background: #016184;
     color: #fff;
     border-color: #014a7b;
-}
-
-@media (max-width: 1279px) {
-    .u-desktop-only {
-        display: none !important;
-    }
 }
 
 .c-btn--mail {
@@ -141,6 +141,7 @@
     border-color: #18a84d;
 }
 
+/* Auth */
 .c-auth-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -162,7 +163,7 @@
 .c-form--stack input {
     padding: 0.65rem 0.75rem;
     border-radius: 10px;
-    border: 1px solid #d1d5db;
+    border: 1px solid #858586;
     background: #f8fafc;
 }
 
@@ -185,6 +186,7 @@
     color: #15803d;
 }
 
+/* Modal */
 .c-modal {
     position: fixed;
     inset: 0;
@@ -240,10 +242,17 @@
     margin-top: 0.25rem;
 }
 
+/* Admin panel y tablas */
 .c-panel--admin {
     width: 100%;
     max-width: none;
     margin: 0 auto;
+}
+
+.c-table__responsive {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
 }
 
 .c-table--grid {
@@ -260,43 +269,36 @@
     display: grid;
     margin-bottom: 0.35rem;
 }
-.c-table--grid thead tr {
+
+.c-table--grid thead tr,
+.c-table--grid tbody tr {
     display: grid;
     grid-template-columns:
-        minmax(70px, 0.9fr) /* ID */
-        minmax(200px, 1.4fr) /* Propiedad / Nombre */
-        minmax(180px, 1.2fr) /* Huésped / Email */
-        minmax(220px, 1.4fr) /* Contacto / Teléfono */
-        minmax(170px, 1.1fr) /* Check-in / País */
-        minmax(170px, 1.1fr) /* Check-out / Ciudad */
-        minmax(90px, 0.8fr) /* Huéspedes / Usuario */
-        minmax(170px, 1fr) /* Creada / Registro */
-        minmax(90px, 0.7fr); /* Acciones */
-    gap: 0.5rem 0.75rem;
+        minmax(64px, 0.9fr)
+        minmax(180px, 1.3fr)
+        minmax(160px, 1.1fr)
+        minmax(190px, 1.2fr)
+        minmax(150px, 1fr)
+        minmax(150px, 1fr)
+        minmax(80px, 0.7fr)
+        minmax(150px, 1fr)
+        minmax(70px, 0.6fr);
+    gap: 0.45rem 0.65rem;
 }
+
 .c-table--grid tbody {
     display: grid;
     gap: 0.75rem;
 }
+
 .c-table--grid tbody tr {
-    display: grid;
-    grid-template-columns:
-        minmax(70px, 0.9fr)
-        minmax(200px, 1.4fr)
-        minmax(180px, 1.2fr)
-        minmax(220px, 1.4fr)
-        minmax(170px, 1.1fr)
-        minmax(170px, 1.1fr)
-        minmax(90px, 0.8fr)
-        minmax(170px, 1fr)
-        minmax(90px, 0.7fr);
-    gap: 0.5rem 0.75rem;
-    padding: 0.9rem 1rem;
+    padding: 0.85rem 0.95rem;
     border: 1px solid #e5e7eb;
     border-radius: 12px;
     background: #f8fafc;
-    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
 }
+
 .c-table--grid thead th {
     text-align: left;
     font-size: 0.92rem;
@@ -304,28 +306,27 @@
     padding: 0 0 0.35rem;
     border-bottom: 1px solid #e5e7eb;
 }
+
 .c-table--grid tbody tr td {
     margin: 0;
     padding: 0;
     font-size: 0.95rem;
     color: #0f172a;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
+
 .c-table--grid .c-table__cell {
-    position: relative;
     min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    overflow: visible;
+    text-overflow: clip;
+    white-space: normal;
 }
+
 .c-table--grid .c-table__cell:last-child {
     text-align: center;
     overflow: visible;
 }
 
-/* Etiquetas móvil */
+/* Etiquetas responsive */
 .c-table__label {
     display: none;
     font-weight: 600;
@@ -333,31 +334,36 @@
     margin-bottom: 4px;
     font-size: 0.85rem;
 }
+
 @media (max-width: 1280px) {
     .c-table--grid thead {
         display: none;
     }
+
     .c-table--grid tbody tr {
         grid-template-columns: repeat(2, minmax(160px, 1fr));
     }
+
     .c-table__cell {
         display: flex;
         flex-direction: column;
         gap: 2px;
-        padding: 8px 12px;
+        padding: 8px 10px;
         white-space: normal;
     }
+
     .c-table__label {
         display: block;
     }
 }
+
 @media (max-width: 720px) {
     .c-table--grid tbody tr {
         grid-template-columns: 1fr;
     }
 }
 
-/* Botón eliminar con aspa */
+/* Botón eliminar */
 .c-btn--danger.c-btn--icon {
     width: 36px;
     height: 36px;
@@ -371,6 +377,7 @@
     justify-content: center;
     position: relative;
 }
+
 .c-btn--danger.c-btn--icon::before,
 .c-btn--danger.c-btn--icon::after {
     content: "";
@@ -380,17 +387,21 @@
     background: #fff;
     border-radius: 2px;
 }
+
 .c-btn--danger.c-btn--icon::before {
     transform: rotate(45deg);
 }
+
 .c-btn--danger.c-btn--icon::after {
     transform: rotate(-45deg);
 }
+
 .c-btn--danger.c-btn--icon:hover {
     background: #c6443f;
     border-color: #b53a34;
 }
 
+/* Flatpickr */
 .flatpickr-day.disabled,
 .flatpickr-day.disabled:hover,
 .flatpickr-day.is-reserved {
@@ -400,73 +411,7 @@
     cursor: not-allowed;
 }
 
-@media (max-width: 1280px) {
-    .c-table--grid tbody tr {
-        grid-template-columns: repeat(2, minmax(160px, 1fr));
-    }
-    .c-table--grid thead {
-        display: none;
-    }
-
-    .c-table--grid tbody tr td {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.1rem;
-        white-space: normal;
-    }
-
-    .c-cell__label {
-        display: inline-block;
-    }
-
-    .c-cell__value,
-    .c-cell__value--stack {
-        white-space: nowrap;
-    }
-}
-
-@media (max-width: 720px) {
-    .c-table--grid tbody tr {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 768px) {
-    .c-about {
-        grid-template-columns: 1fr;
-    }
-    .c-about__media img {
-        max-height: 260px;
-        object-fit: cover;
-    }
-}
-
-@media (max-width: 720px) {
-    .c-panel--split {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .c-contact-actions {
-        width: 100%;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-    }
-
-    .c-contact-actions .c-btn {
-        width: 100%;
-        max-width: 420px;
-        justify-content: center;
-    }
-
-    .c-navbar__nav {
-        flex-wrap: wrap;
-    }
-}
-
+/* Utilidades */
 .u-ellipsis {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -477,9 +422,7 @@
 }
 
 .u-mono {
-    font-family:
-        ui-monospace, SFMono-Regular, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
-        monospace;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     letter-spacing: 0.01em;
 }
 
@@ -489,45 +432,7 @@
     min-width: 2ch;
 }
 
-.c-panel__header--sub {
-    margin-top: 12px;
-}
-
-.c-stats {
-    display: grid;
-    gap: 12px;
-    margin: 12px 0 20px;
-}
-
-.c-stats--grid {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-}
-
-.c-stat {
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-    padding: 12px;
-    background: #fff;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
-}
-
-.c-stat__label {
-    font-size: 0.85rem;
-    color: #52616b;
-    margin: 0 0 4px;
-}
-
-.c-stat__value {
-    font-size: 1.4rem;
-    margin: 4px 0 0;
-}
-
-.c-stat__note {
-    margin: 0.1rem 0 0;
-    color: #64748b;
-    font-size: 0.85rem;
-}
-
+/* Alertas */
 .c-alert {
     padding: 0.75rem 1rem;
     border-radius: 10px;
@@ -542,10 +447,11 @@
     color: #9a3412;
 }
 
+/* Chat */
 .c-chat-launcher {
     position: fixed;
     right: 30px;
-    bottom: 150px;
+    bottom: 50px;
     z-index: 1400;
     display: flex;
     flex-direction: column;
@@ -554,16 +460,12 @@
 }
 
 .c-chat-launcher__btn {
-    width: 68px;
-    height: 68px;
+    width: 76px; /* antes 68 */
+    height: 76px; /* antes 68 */
     border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    background: #fff url("/assets/img/stylo-bot.png") center/cover no-repeat;
-    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.18);
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .c-chat-launcher__btn:hover {
@@ -606,12 +508,26 @@
 
 .c-chat__header {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 0.85rem 1rem;
     font-weight: 700;
     color: #0f172a;
     border-bottom: 1px solid #e5e7eb;
+}
+
+.c-chat__title-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.c-chat__avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 999px;
+    object-fit: cover;
 }
 
 .c-chat__close {
@@ -652,6 +568,11 @@
     align-self: flex-start;
     background: #eef2ff;
     color: #0f172a;
+}
+
+.c-chat__message.is-typing {
+    opacity: 0.85;
+    font-style: italic;
 }
 
 .c-chat__actions {
@@ -706,169 +627,64 @@
     width: 100%;
 }
 
-/* Eliminamos estilos de métricas/c-stats para volver al estado previo */
-.c-stats,
-.c-stats--grid,
-.c-stat,
-.c-stat__label,
-.c-stat__value,
-.c-stat__note {
-    display: none;
-}
-
-/* Contenedor de tablas admin */
-.c-table__responsive {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: auto;
-}
-
-/* Grid de tablas admin (desktop) */
-.c-table--grid thead tr,
-.c-table--grid tbody tr {
-    display: grid;
-    grid-template-columns:
-        minmax(64px, 0.9fr) /* ID */
-        minmax(180px, 1.3fr) /* Propiedad / Nombre */
-        minmax(160px, 1.1fr) /* Huésped / Email */
-        minmax(190px, 1.2fr) /* Contacto / Teléfono */
-        minmax(150px, 1fr) /* Check-in / País */
-        minmax(150px, 1fr) /* Check-out / Ciudad */
-        minmax(80px, 0.7fr) /* Huéspedes / Usuario */
-        minmax(150px, 1fr) /* Creada / Registro */
-        minmax(70px, 0.6fr); /* Acciones */
-    gap: 0.45rem 0.65rem;
-}
-
-.c-table--grid tbody tr {
-    padding: 0.85rem 0.95rem;
-}
-
-.c-table--grid .c-table__cell {
-    min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-/* Última columna sin recorte para el botón */
-.c-table--grid .c-table__cell:last-child {
-    text-align: center;
-    overflow: visible;
-}
-
-/* Responsive */
-@media (max-width: 1280px) {
-    .c-table--grid thead {
-        display: none;
+/* Responsive general */
+@media (max-width: 768px) {
+    .c-about {
+        grid-template-columns: 1fr;
     }
-    .c-table--grid tbody tr {
-        grid-template-columns: repeat(2, minmax(160px, 1fr));
-    }
-    .c-table__cell {
-        white-space: normal;
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-        padding: 8px 10px;
+
+    .c-about__media img {
+        max-height: 260px;
+        object-fit: cover;
     }
 }
 
 @media (max-width: 720px) {
-    .c-table--grid tbody tr {
-        grid-template-columns: 1fr;
-    }
-}
-
-.c-user-page {
-    padding-top: 1.25rem;
-    padding-bottom: 2rem;
-}
-
-.c-user-reservations {
-    background: #fff;
-    border: 1px solid #e5e7eb;
-    border-radius: 14px;
-    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
-    padding: 1rem;
-}
-
-.c-user-reservations .c-panel__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 0.75rem;
-}
-
-.c-user-reservations .c-panel__title h2 {
-    margin: 0;
-}
-
-.c-user-reservations .c-panel__title p {
-    margin: 0.25rem 0 0;
-    color: #64748b;
-}
-
-.c-user-reservations .c-table__responsive {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: auto;
-}
-
-.c-user-reservations .c-table {
-    width: 100%;
-}
-
-.c-user-reservations .c-form__feedback {
-    margin: 0.5rem 0 0.75rem;
-}
-
-@media (max-width: 768px) {
-    .c-user-reservations .c-panel__header {
+    .c-panel--split {
         flex-direction: column;
         align-items: flex-start;
     }
+
+    .c-contact-actions {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .c-contact-actions .c-btn {
+        width: 100%;
+        max-width: 420px;
+        justify-content: center;
+    }
+
+    .c-navbar__nav {
+        flex-wrap: wrap;
+    }
 }
 
-/* Mantener únicamente separación de la página usuario.
-   El estilo real del footer debe venir de su archivo original (footer/navbar/layout). */
-.c-user-page + .c-footer {
-    margin-top: 2rem;
+/* Regla solicitada: ocultar admin y desktop-only a <=1020 */
+@media (max-width: 1020px) {
+    #view-admin,
+    .c-navbar__link[data-view="admin"],
+    .u-desktop-only {
+        display: none !important;
+    }
 }
 
-/* Mejor contraste en menú usuario */
-.c-user-menu__dropdown a {
-    color: #0f172a; /* texto más oscuro */
-    font-weight: 600;
+/* Firma de Lia: soporta <img> externo inline */
+.c-lia-signature {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
 }
 
-.c-user-menu__dropdown a:hover,
-.c-user-menu__dropdown a:focus-visible {
-    color: #ffffff;
-    background: #016184; /* consistente con botones primarios */
-    outline: none;
-}
-
-.c-user-menu__dropdown a,
-.c-user-menu__dropdown button {
-    width: 100%;
-    text-align: left;
-    display: block;
-    padding: 8px 10px;
-    border-radius: 8px;
-    border: none;
-    background: transparent;
-    color: #0f172a;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.c-user-menu__dropdown a:hover,
-.c-user-menu__dropdown a:focus-visible,
-.c-user-menu__dropdown button:hover,
-.c-user-menu__dropdown button:focus-visible {
-    color: #fff;
-    background: #016184;
-    outline: none;
+.c-lia-signature img,
+.c-lia-signature__icon {
+    width: 30px !important;
+    height: 30px !important;
+    border-radius: 50%;
+    object-fit: cover;
+    vertical-align: middle;
 }
