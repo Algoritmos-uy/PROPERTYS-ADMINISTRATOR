@@ -1,6 +1,6 @@
-# Airbnb Clone (Staylo)
+# Property_Admin (Staylo)
 
-Aplicación web tipo Airbnb para gestión y visualización de propiedades, con panel administrativo, autenticación básica y asistente conversacional (Lia).
+Aplicación web  para gestión y visualización de propiedades, con panel administrativo, autenticación básica y asistente conversacional (Lia).
 
 ## Estado actual del proyecto
 

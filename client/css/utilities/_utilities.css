@@ -2,12 +2,12 @@
 
 /* Mostrar por defecto en desktop */
 .u-desktop-only {
-  display: initial;
+    display: initial;
 }
 
 /* Ocultar en <= 1020px */
 @media (max-width: 1020px) {
-  .u-desktop-only {
-    display: none !important;
-  }
+    .u-desktop-only {
+        display: none !important;
+    }
 }

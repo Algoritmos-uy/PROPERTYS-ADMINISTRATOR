@@ -1,181 +1,75 @@
-# Descripción funcional de la aplicación
+# Staylo (Property-Admin) — Descripción ejecutiva
 
-## 1. Resumen general
+## ¿Qué es?
 
-**Staylo (Airbnb Clone)** es una aplicación web para publicación y gestión de propiedades de alojamiento temporal.  
-Permite a usuarios explorar inmuebles, registrarse, iniciar sesión y realizar reservas.  
-Además, incluye un panel administrativo para gestionar reservas y usuarios, junto con un asistente conversacional (Lia) para apoyo en consultas.
+**Staylo** es una plataforma web para gestión de alojamiento temporal que integra en un solo sistema:
 
----
+- Exploración de propiedades
+- Registro e inicio de sesión de usuarios
+- Reservas en línea
+- Panel administrativo
+- Asistente virtual de soporte (Lia)
 
-## 2. Objetivo del sistema
-
-Centralizar en una sola plataforma:
-
-- Visualización de propiedades disponibles.
-- Proceso de reserva por parte del usuario.
-- Gestión administrativa de datos y operaciones.
-- Canal de ayuda rápida mediante asistente virtual.
+Su objetivo es simplificar la operación comercial y administrativa de propiedades, con una experiencia clara para usuario final y administradores.
 
 ---
 
-## 3. Funciones principales
+## Capacidades clave
 
-## 3.1 Navegación por vistas
+### 1) Experiencia de usuario (Frontend)
+- Navegación por vistas: Inicio, Sobre nosotros, Contacto, Pagos y Admin.
+- Catálogo de propiedades con tarjetas visuales.
+- Filtros por rango de precio.
+- Ordenamiento por precio (ascendente/descendente).
+- Vista de detalle de propiedad con contenido ampliado y flujo de reserva.
 
-La app está organizada por vistas internas (SPA ligera), permitiendo cambiar entre:
+### 2) Gestión de cuenta y reservas
+- Registro, login y logout de usuarios.
+- Persistencia de sesión.
+- Creación de reservas para usuarios autenticados.
 
-- **Inicio** (listado de propiedades)
-- **Sobre nosotros**
-- **Contacto**
-- **Pagos**
-- **Admin** (solo acceso administrativo)
-
----
-
-## 3.2 Módulo de propiedades (Inicio)
-
-En la vista principal se muestran tarjetas de propiedades con:
-
-- Imagen
-- Título
-- Ubicación
-- Precio por noche
-- Enlace a detalle de propiedad
-
-### Funcionalidades del listado
-
-- Render dinámico desde backend.
-- Filtro por rango de precio:
-  - precio mínimo
-  - precio máximo
-- Ordenamiento configurable:
-  - predeterminado (ID ascendente)
-  - precio ascendente
-  - precio descendente
-
----
-
-## 3.3 Detalle de propiedad
-
-Cada propiedad posee una página de detalle (`property.html`) donde se visualiza información ampliada del inmueble y se habilita el flujo de reserva.
-
----
-
-## 3.4 Autenticación de usuarios
-
-El sistema incluye:
-
-- Registro de usuario
-- Inicio de sesión
-- Cierre de sesión
-
-Con persistencia de sesión en cliente para mantener estado autenticado durante la navegación.
-
----
-
-## 3.5 Reservas
-
-Usuarios autenticados pueden crear reservas sobre propiedades disponibles.  
-El sistema gestiona almacenamiento y consulta de reservas para su administración posterior.
-
----
-
-## 3.6 Panel administrativo
-
-Módulo exclusivo para administradores con autenticación separada:
-
-- Login admin
-- Logout admin
-- Visualización de reservas registradas
-- Eliminación de reservas
-- Visualización de usuarios registrados
+### 3) Operación administrativa
+- Acceso administrativo separado.
+- Visualización y eliminación de reservas.
+- Visualización de usuarios registrados.
 - Exportación de información:
-  - Reservas en CSV y Excel
-  - Usuarios en CSV
+  - Reservas: CSV y Excel
+  - Usuarios: CSV
 
-### Comportamiento responsive del admin
-
-El acceso admin se restringe visualmente en ciertos breakpoints para priorizar uso en escritorio.
-
----
-
-## 3.7 Asistente virtual Lia
-
-Asistente conversacional integrado en interfaz mediante launcher flotante:
-
-- Atiende preguntas frecuentes.
-- Da soporte orientado a propiedades y reservas.
-- Muestra respuestas con efecto de escritura progresiva.
-- Mantiene identidad de marca (Lia) en textos y firma.
+### 4) Asistencia conversacional
+- **Lia**, asistente virtual integrada en launcher flotante.
+- Soporte en preguntas frecuentes y orientación de uso.
+- Respuesta con escritura progresiva para mejor percepción de interacción.
 
 ---
 
-## 4. Servicios de backend
+## Arquitectura tecnológica
 
-La API backend expone endpoints para:
-
-- Consulta de propiedades
-- Gestión de autenticación de usuario
-- Gestión de reservas
-- Gestión administrativa
-- Soporte a respuestas del asistente virtual
-
-El backend está desarrollado con **Node.js + Express** y persiste datos en **SQLite**.
+- **Frontend:** HTML, CSS, JavaScript modular.
+- **Backend:** Node.js + Express.
+- **Base de datos:** SQLite (`server/database/stylo.sqlite`).
+- **Modelo de integración:** API REST interna para propiedades, auth, reservas, admin y asistente.
 
 ---
 
-## 5. Persistencia de datos
+## Estado del proyecto
 
-Base de datos local en archivo:
-
-- `server/database/stylo.sqlite`
-
-Contiene información de:
-
-- propiedades
-- usuarios
-- reservas
+El sistema se encuentra en **fase avanzada de pruebas funcionales**, con los módulos principales operativos y listos para validación en servidor real de pruebas.
 
 ---
 
-## 6. Estructura técnica resumida
+## Valor para negocio
 
-### Frontend
-
-- HTML, CSS, JavaScript modular
-- Render dinámico por vistas
-- Componentes visuales reutilizables
-
-### Backend
-
-- Node.js + Express
-- Rutas y controladores por dominio funcional
-- Validaciones y middleware para rutas protegidas
+- Centraliza procesos de consulta, reserva y control administrativo.
+- Reduce carga operativa con exportaciones y panel de gestión.
+- Mejora atención inicial al usuario con asistente virtual.
+- Base sólida para escalar a entorno productivo con hardening de seguridad y     optimización final.
 
 ---
 
-## 7. Enfoque de experiencia de usuario
+## Próxima etapa recomendada
 
-La aplicación prioriza:
-
-- Interfaz clara y directa.
-- Navegación rápida entre módulos.
-- Acciones administrativas simples.
-- Soporte conversacional para reducir fricción del usuario.
-
----
-
-## 8. Estado actual del proyecto
-
-El proyecto se encuentra en fase avanzada de prueba funcional, con los módulos principales operativos y en proceso de ajustes finales para despliegue en entorno real de pruebas.
-
----
-
-## 9. Próximas mejoras previstas
-
-- Endurecimiento de seguridad del módulo admin.
-- Mejoras de robustez en autenticación y manejo de sesión.
-- Extensión de funcionalidades de perfil de usuario.
-- Refinamiento del asistente virtual en tono y contexto conversacional.
-- Optimización final para despliegue productivo.
+1. Endurecimiento de seguridad del módulo admin y sesiones.
+2. Mejoras de perfil de usuario y gestión de cuenta.
+3. Ajustes finales de UX/UI responsive.
+4. Preparación de despliegue productivo (monitorización, backups, logs y control de errores).
